@@ -7,21 +7,21 @@ unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 500;
 unsigned long lastDebounceTime2 = 0;
 unsigned long debounceDelay2 = 500;
-unsigned long lastDebounceTimeE = 0;
-unsigned long debounceDelayE = 500;
-unsigned long lastDebounceTimeR = 0;
-unsigned long debounceDelayR = 500;
+unsigned long lastDebounceTime3 = 0;
+unsigned long debounceDelay3 = 500;
+unsigned long lastDebounceTime4 = 0;
+unsigned long debounceDelay4 = 500;
 
 //Keypad Buttons
 const int buttonPin1 = 5;
 const int buttonPin2 = 7;
-const int buttonPinr = 12;
-const int buttonPinE  = 9;
+const int buttonPin3 = 12;
+const int buttonPin4  = 9;
 
 int buttonState1 = 0;
 int buttonState2 = 0;
-int buttonStater = 0;
-int buttonStateE = 0;
+int buttonState3 = 0;
+int buttonState4 = 0;
 
 int lastbuttonstate = HIGH;
 
@@ -42,8 +42,8 @@ void setup() {
 //Pulls the keyswitches high
   pinMode(buttonPin1, INPUT_PULLUP);
   pinMode(buttonPin2, INPUT_PULLUP);
-  pinMode(buttonPinr, INPUT_PULLUP);
-  pinMode(buttonPinE, INPUT_PULLUP);
+  pinMode(buttonPin3, INPUT_PULLUP);
+  pinMode(buttonPin4, INPUT_PULLUP);
   
   Serial.begin(9600);
 
@@ -59,8 +59,8 @@ void loop() {
   rgbcolor();
   keyCheck1();
   keyCheck2();
-  keyCheckR();
-  keyCheckE();
+  keyCheck3();
+  keyCheck4();
 
 
 }
@@ -93,30 +93,30 @@ void keyCheck2() {
   }
 }
 
-void keyCheckR() {
+void keyCheck3() {
 
-  buttonStater = digitalRead(buttonPinr);
+  buttonState3 = digitalRead(buttonPin3);
 
-  if ((millis() - lastDebounceTimeR) < debounceDelayR) {
+  if ((millis() - lastDebounceTime3) < debounceDelay3) {
     return;
   }
-  lastDebounceTimeR += debounceDelayR;
+  lastDebounceTime3 += debounceDelay3;
 
-  if (buttonStater == LOW) {
+  if (buttonState3 == LOW) {
     Serial.write('c');
   }
 }
 
-void keyCheckE() {
+void keyCheck4() {
 
-  buttonStateE = digitalRead(buttonPinE);
+  buttonState4 = digitalRead(buttonPin4);
 
-  if ((millis() - lastDebounceTimeE) < debounceDelayE) {
+  if ((millis() - lastDebounceTime4) < debounceDelay4) {
     return;
   }
-  lastDebounceTimeE += debounceDelayE;
+  lastDebounceTime4 += debounceDelay4;
 
-  if (buttonStateE == LOW) {
+  if (buttonState4 == LOW) {
     Serial.write('d');
   }
 }
