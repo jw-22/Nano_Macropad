@@ -2,6 +2,7 @@
     3/20/21
     Arduino macropad code to be used by python script.
 */
+
 //Sets time to delay sending output.
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 500;
@@ -12,7 +13,7 @@ unsigned long debounceDelay3 = 500;
 unsigned long lastDebounceTime4 = 0;
 unsigned long debounceDelay4 = 500;
 
-//Keypad Buttons
+//Keypad buttons to digital pins
 const int buttonPin1 = 5;
 const int buttonPin2 = 7;
 const int buttonPin3 = 12;
@@ -51,18 +52,14 @@ void setup() {
   pinMode(rPin, OUTPUT);
   pinMode(gPin, OUTPUT);
   pinMode(bPin, OUTPUT);
-
 }
 
 void loop() {
-
   rgbcolor();
   keyCheck1();
   keyCheck2();
   keyCheck3();
   keyCheck4();
-
-
 }
 
 
